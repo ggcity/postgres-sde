@@ -5,13 +5,15 @@ USAGE
 ----------------
 * This build includes Postgres version 9.5.7 with PostGIS version 2.2. 
 
-* This build does not include .so files as they are proprietary to Esri. These files are included with installation of ArcDesktop or ArcServer. See Esri's support site for instructions to setup licensing for your agency.
+* This build does not include .so files as they are proprietary to Esri. These files are included with installation of ArcDesktop or ArcServer. See the [Esri support site](http://desktop.arcgis.com/en/arcmap/latest/manage-data/gdbs-in-postgresql/setup-geodatabase-postgresql-linux.htm) for instructions to setup licensing for your agency. This container was built with ArcDesktop 10.5 .so files.
 
 * After cloning this repository, obtain and activate .so files from Esri & place all 3 .so files in the `esri/` directory
 
 * To change the default database name, edit the `ENV POSTGRES_DB` parameter in the Dockerfile
 
 * If you want to add proprietary Esri projections, add them to the `initdb/2_insert_esri_srids.sql` file. Any .sh or .sql files placed in this directory will be run on docker build.
+
+* Once Postgres is up, simply connect to the database in ArcCatalog and use the Esri `Enable Enterprise Geodatabase (Data Management)` tool to build the SDE tables.
 
 Run the following commands to initialize the Docker instance using the container psql:
 
